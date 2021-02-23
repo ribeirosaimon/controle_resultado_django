@@ -2,7 +2,9 @@ from django.shortcuts import render
 from django.views.generic.base import View
 from django.urls import reverse_lazy
 from .service import open_csv
-
+from core.google_calendar.quickstart import *
+from core.google_calendar.criar_eventos import *
+from core.google_calendar.conferir_calendario import *
 
 class ResultadoViews(View):
     def get(self, request, *args, **kwargs):
@@ -10,4 +12,6 @@ class ResultadoViews(View):
         return render(request, "resultados.html", context=context)
     def post(self,request, *args, **kwargs):
         empresas = request.POST.getlist('empresas')
+        service = create_google_calendar()
+        conferir_google_com_b3(service, empresas)
         return render(request, "resultados.html")
