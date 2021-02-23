@@ -1,0 +1,41 @@
+{% extends 'base.html'%}
+
+{% load bootstrap4 %}
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <table class="table table-striped">
+        <thead class="table-light">
+            <tr>
+                <th>Ação</th>
+                <th>Primeiro Trimestre</th>
+                <th>Segundo Trimestre</th>
+                <th>Terceiro Trimestre</th>
+                <th>Selecionar</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for d in info %}
+                <tr>
+                    <td>{{d.empresa}}</td>
+                    <td>{{d.resultados.primeiro_tri}}</td>
+                    <td>{{d.resultados.segundo_tri}}</td>
+                    <td>{{d.resultados.terceiro_tri}}</td>
+                    <td>
+                        <input type="checkbox" class="btn-check" id="btn-check" autocomplete="off" value="{{ d.empresa }}" name='empresas'>
+                        <label class="form-check-label" for="exampleRadios1">
+                        </label>
+                    </td>  
+                </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+    <div class='content'>
+        <button type="submit">Submit</button>
+    </div>
+    
+</form>
+
+{% endblock %}
