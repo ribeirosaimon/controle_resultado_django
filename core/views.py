@@ -16,7 +16,7 @@ class ResultadoViews(View):
         empresas = request.POST.getlist('empresas')
         service = create_google_calendar()
         conferir_google_com_b3(service, empresas)
-        return render(request, "resultados.html")
+        return render(request, "sucesso.html")
 
 
 class IndexView(TemplateView):
