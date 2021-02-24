@@ -1,16 +1,21 @@
 {% load static %}
-{% load bootstrap4 %}
-{% bootstrap_css %}
-{% bootstrap_javascript jquery='full' %}
 <!DOCTYPE html>
+<html lang="pt-br">
 
-<html>
 <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cronograma de Eventos Corporativos</title>
+    <link rel="shortcut icon" href="{%  static 'business-color_money-coins_icon-icons.com_53446.ico' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta name="theme-color" content="#ffffff">
+    <link href="{% static 'public/assets/css/theme.css'%}" rel="stylesheet" />
+</head>
 <body>
-    <main>
+    <div class="conteiner bg-danger">
         {% block content %}
         {% endblock %}
-    </main>
+    </div>
+
 </body>
-</html>

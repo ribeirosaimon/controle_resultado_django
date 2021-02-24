@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <main class="main bg-light" id="center">
+      <section class="pb-6">
+        <div class="container">
+          <div class="row flex-center">
+            <div class="col-lg-6 col-md-5 order-md-1"><img class="img-fluid" src="{% static 'public/assets/img/illustrations/1.png'%}" alt="" /></div>
+            <div class="col-md-7 col-lg-6 mt-5 text-center text-md-start">
+              <h1 class="fw-medium">Cronograma de <br />Eventos <span class="fw-bold">Corporativos.</span></h1>
+              <p class="mt-3 mb-4">Aplicação para vincular os  <span class="fw-medium">Eventos Corporativos </span>da B3 com seu Google Calendar no Smartphone</p>
+              <a class="btn btn-lg btn-danger hover-top btn-glow" href="{% url 'resultados' %}">Vincule Agora</a><br/>
+              <br>
+              <a class="btn btn-lg btn-danger hover-top btn-glow" href="https://api.whatsapp.com/send?phone=5548991784586&text=Olá,%20meu%20amigo,%20queria%20uma%20informação!!!.">Entre em Contato com o Desenvolvedor</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      </main>    
+{% endblock %}
