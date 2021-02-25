@@ -22,5 +22,5 @@ class ResultadoViews(View):
 class IndexView(TemplateView):
     template_name = 'index.html'
 
-class SucessoViews(TemplateView):
+class SucessoViews(TemplateView):   
     template_name = 'sucesso.html'
