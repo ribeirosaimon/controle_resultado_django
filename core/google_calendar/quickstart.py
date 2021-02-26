@@ -5,11 +5,12 @@ import os.path
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
-
+from .work import *
 
 SCOPES = ['https://www.googleapis.com/auth/calendar']
 
-def create_google_calendar():
+def create_google_calendar(requests):
+    credencial(requests)
     """Shows basic usage of the Google Calendar API.
     Prints the start and name of the next 10 events on the user's calendar.
     """

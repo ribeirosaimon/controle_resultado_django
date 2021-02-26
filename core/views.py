@@ -14,7 +14,7 @@ class ResultadoViews(View):
         return render(request, "resultados.html", context=context)
     def post(self,request, *args, **kwargs):
         empresas = request.POST.getlist('empresas')
-        service = create_google_calendar()
+        service = create_google_calendar(request)
         conferir_google_com_b3(service, empresas)
         return render(request, "sucesso.html")
 
