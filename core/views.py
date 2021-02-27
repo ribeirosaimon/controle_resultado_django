@@ -7,7 +7,7 @@ from core.google_calendar.quickstart import *
 from core.google_calendar.criar_eventos import *
 from core.google_calendar.conferir_calendario import *
 from django.contrib import messages
-from .google_api_aut import *
+
 class ResultadoViews(View):
     def get(self, request, *args, **kwargs):
         context = {'info':open_csv()}
@@ -15,7 +15,7 @@ class ResultadoViews(View):
     def post(self,request, *args, **kwargs):
         empresas = request.POST.getlist('empresas')
         service = create_google_calendar(request)
-        conferir_google_com_b3(service, empresas)
+        criar_eventos(service, empresas)
         return render(request, "sucesso.html")
 
 
