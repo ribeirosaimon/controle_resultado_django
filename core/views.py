@@ -7,15 +7,18 @@ from core.google_calendar.quickstart import *
 from core.google_calendar.criar_eventos import *
 from core.google_calendar.conferir_calendario import *
 from django.contrib import messages
-
+import os
 class ResultadoViews(View):
     def get(self, request, *args, **kwargs):
         context = {'info':open_csv()}
         return render(request, "resultados.html", context=context)
     def post(self,request, *args, **kwargs):
+        os.remove('token.pickle')
+        print('fooooooooooooooi')
         empresas = request.POST.getlist('empresas')
         service = create_google_calendar(request)
         criar_eventos(service, empresas)
+
         return render(request, "sucesso.html")
 
 
