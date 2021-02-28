@@ -1,3 +1,4 @@
+
 from __future__ import print_function
 import datetime
 import pickle
@@ -15,17 +16,17 @@ from django.conf import settings
 SCOPES = "https://www.googleapis.com/auth/calendar"
 
 def create_google_calendar(request):
-    creds = None
-    if os.path.exists('token.pickle'):
-        with open('token.pickle', 'rb') as token:
-            creds = pickle.load(token)
-    if not creds or not creds.valid:
-        if creds and creds.expired and creds.refresh_token:
-            creds.refresh(Request())
-        else:
-            flow = InstalledAppFlow.from_client_secrets_file(
-                settings.GOOGLE_OAUTH2_CLIENT_SECRETS_JSON, SCOPES)
-            creds = flow.run_local_server(port=0)
-        with open('token.pickle', 'wb') as token:
-            pickle.dump(creds, token)
-    return build('calendar', 'v3', credentials=creds)
+    google_app = SocialApp.objects.get(provider='google')
+    usuario = request.user
+
+    user_account = SocialAccount.objects.get(user=request.user)
+    user_token = user_account.socialtoken_set.first()
+
+    client_key = google_app.client_id
+    client_secret = google_app.secret
+    resource_owner_key = user_token.token
+    resource_owner_secret = user_token.token_secret
+
+
+    auth = OAuth1Session(client_key, client_secret, resource_owner_key, resource_owner_secret)
+    r = requests.get(protected_url, auth=auth)

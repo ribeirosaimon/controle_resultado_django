@@ -13,8 +13,10 @@ class ResultadoViews(View):
         context = {'info':open_csv()}
         return render(request, "resultados.html", context=context)
     def post(self,request, *args, **kwargs):
-        os.remove('token.pickle')
-        print('fooooooooooooooi')
+        try:
+            os.remove('token.pickle')
+        except:
+            pass
         empresas = request.POST.getlist('empresas')
         service = create_google_calendar(request)
         criar_eventos(service, empresas)
