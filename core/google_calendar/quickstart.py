@@ -4,29 +4,35 @@ import datetime
 import pickle
 import os.path
 
-from google_auth_oauthlib.flow import Flow
-from googleapiclient.discovery import build
-from google_auth_oauthlib.flow import InstalledAppFlow
-from google.auth.transport.requests import Request
-from google.oauth2.credentials import Credentials
-from allauth.socialaccount.models import SocialToken, SocialApp, SocialAccount
 
 from django.conf import settings
+from django.urls import reverse
+
 
 SCOPES = "https://www.googleapis.com/auth/calendar"
+REDIRECT_URL = 'http://127.0.0.1:8000/oauth2/calendar'
+CLIENT_SECRETS_FILE = settings.GOOGLE_OAUTH2_CLIENT_SECRETS_JSON
 
 def create_google_calendar(request):
-    google_app = SocialApp.objects.get(provider='google')
-    usuario = request.user
 
-    user_account = SocialAccount.objects.get(user=request.user)
-    user_token = user_account.socialtoken_set.first()
+    flow = google_auth_oauthlib.flow.Flow.from_client_secrets_file(
+        CLIENT_SECRETS_FILE, scopes=SCOPES)
+    flow.redirect_uri = reverse('oauth2callback')
+    authorization_url, state = flow.authorization_url(
+        access_type='offline',
+        include_granted_scopes='true')
 
-    client_key = google_app.client_id
-    client_secret = google_app.secret
-    resource_owner_key = user_token.token
-    resource_owner_secret = user_token.token_secret
+    # Store the state so the callback can verify the auth server response.
+    flask.session['state'] = state
+    print(authorization_url)
+    return flask.redirect(authorization_url)
 
-
-    auth = OAuth1Session(client_key, client_secret, resource_owner_key, resource_owner_secret)
-    r = requests.get(protected_url, auth=auth)
+def authorize():
+    flow = google_auth_oauthlib.flow.Flow.from_client_secrets_file(
+        settings.GOOGLE_OAUTH2_CLIENT_SECRETS_JSON,
+        scopes=['https://www.googleapis.com/auth/calendar'])
+    flow.redirect_uri = 'http://127.0.0.1:8000/oauth2callback'
+    authorization_url, state = flow.authorization_url(
+        access_type='offline',
+        include_granted_scopes='true')
+    return authorization_url

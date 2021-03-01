@@ -3,9 +3,13 @@ from .views import ResultadoViews, IndexView, SucessoViews
 from django.views.generic.base import RedirectView
 from django.contrib.staticfiles.storage import staticfiles_storage
 
+from core.google_calendar import to_do
+
 urlpatterns = [
     path('',IndexView.as_view(template_name="index.html"), name='index'),
     path('resultados',ResultadoViews.as_view(), name='resultados'),
     path('sucesso',SucessoViews.as_view(), name='sucesso'),
-    path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url("favicon.ico")),)
+    path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url("favicon.ico"))),
+    path('autorizacao', to_do.Authorize, name='autorizacao'),
+    path('oauth2callback',to_do.oauth2callback, name='oauth2callback')
 ]
