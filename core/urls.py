@@ -10,6 +10,4 @@ urlpatterns = [
     path('resultados',ResultadoViews.as_view(), name='resultados'),
     path('sucesso',SucessoViews.as_view(), name='sucesso'),
     path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url("favicon.ico"))),
-    path('autorizacao', to_do.Authorize, name='autorizacao'),
-    path('oauth2callback',to_do.oauth2callback, name='oauth2callback')
 ]
