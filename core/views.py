@@ -9,8 +9,6 @@ from core.google_calendar.conferir_calendario import *
 from django.contrib import messages
 import os
 
-from core.google_calendar.to_do import *
-
 
 class ResultadoViews(View):
     def get(self, request, *args, **kwargs):
@@ -22,10 +20,8 @@ class ResultadoViews(View):
         except:
             pass
         empresas = request.POST.getlist('empresas')
-        authorize()
-
-        #service = create_google_calendar(request)
-        #criar_eventos(service, empresas)
+        service = authorize()
+        criar_eventos(service, empresas)
 
         return render(request, "sucesso.html")
 

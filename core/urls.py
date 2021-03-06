@@ -3,8 +3,6 @@ from .views import ResultadoViews, IndexView, SucessoViews
 from django.views.generic.base import RedirectView
 from django.contrib.staticfiles.storage import staticfiles_storage
 
-from core.google_calendar import to_do
-
 urlpatterns = [
     path('',IndexView.as_view(template_name="index.html"), name='index'),
     path('resultados',ResultadoViews.as_view(), name='resultados'),

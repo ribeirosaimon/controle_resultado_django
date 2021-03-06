@@ -137,19 +137,3 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 LOGIN_REDIRECT_URL = '/'
 
 GOOGLE_OAUTH2_CLIENT_SECRETS_JSON = 'client_secret_924332711996-eujnigkg16bo75jhbokv0upnl8nvcaop.apps.googleusercontent.com.json'
-
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'SCOPE': [
-            'profile',
-            'email',
-        ],
-        'AUTH_PARAMS': {
-            'access_type': 'online',
-        }
-    }
-}
-
-SITE_ID = 1
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '924332711996-eujnigkg16bo75jhbokv0upnl8nvcaop.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'tHb_k_Au4Ep9PxZMDOhz9w_B'
