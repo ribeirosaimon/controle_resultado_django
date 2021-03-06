@@ -96,7 +96,7 @@ AUTHENTICATION_BACKENDS = [
 
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
-    'social_core.backends.google.Google.OAuth2'
+    #'social_core.backends.google.Google.OAuth2'
 ]
 
 # Password validation
