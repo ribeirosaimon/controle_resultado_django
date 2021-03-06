@@ -22,7 +22,8 @@ class ResultadoViews(View):
         except:
             pass
         empresas = request.POST.getlist('empresas')
-        
+        authorize()
+
         #service = create_google_calendar(request)
         #criar_eventos(service, empresas)
 

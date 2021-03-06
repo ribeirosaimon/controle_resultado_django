@@ -28,6 +28,7 @@ def create_google_calendar(request):
     return flask.redirect(authorization_url)
 
 def authorize():
+    import google_auth_oauthlib
     flow = google_auth_oauthlib.flow.Flow.from_client_secrets_file(
         settings.GOOGLE_OAUTH2_CLIENT_SECRETS_JSON,
         scopes=['https://www.googleapis.com/auth/calendar'])
@@ -35,4 +36,6 @@ def authorize():
     authorization_url, state = flow.authorization_url(
         access_type='offline',
         include_granted_scopes='true')
+    print(authorization_url)
     return authorization_url
+

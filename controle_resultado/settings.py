@@ -91,12 +91,8 @@ DATABASES = {
     }
 }
 AUTHENTICATION_BACKENDS = [
-    # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
-
-    # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
-    #'social_core.backends.google.Google.OAuth2'
 ]
 
 # Password validation
@@ -141,7 +137,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 LOGIN_REDIRECT_URL = '/'
 
 GOOGLE_OAUTH2_CLIENT_SECRETS_JSON = 'client_secret_924332711996-eujnigkg16bo75jhbokv0upnl8nvcaop.apps.googleusercontent.com.json'
-os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'SCOPE': [
@@ -149,10 +145,11 @@ SOCIALACCOUNT_PROVIDERS = {
             'email',
         ],
         'AUTH_PARAMS': {
-            'access_type': 'offline',
+            'access_type': 'online',
         }
     }
 }
 
+SITE_ID = 1
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '924332711996-eujnigkg16bo75jhbokv0upnl8nvcaop.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'tHb_k_Au4Ep9PxZMDOhz9w_B'
