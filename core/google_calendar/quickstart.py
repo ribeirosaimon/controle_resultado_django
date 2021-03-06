@@ -5,7 +5,7 @@ from googleapiclient.discovery import build
 
 
 def authorize():
-    launch_browser = False
+    launch_browser = True
     appflow = flow.InstalledAppFlow.from_client_secrets_file(
         settings.GOOGLE_OAUTH2_CLIENT_SECRETS_JSON, scopes=["https://www.googleapis.com/auth/calendar"]
     )
