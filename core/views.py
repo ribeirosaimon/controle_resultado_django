@@ -9,7 +9,7 @@ from core.google_calendar.conferir_calendario import *
 from django.contrib import messages
 import os
 from urllib.parse import urlencode
-from django.contrib.sites.models import Site
+
 
 
 class ResultadoViews(View):
