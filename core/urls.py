@@ -9,7 +9,7 @@ urlpatterns = [
     path('',IndexView.as_view(template_name="index.html"), name='index'),
     path('resultados',ResultadoViews.as_view(), name='resultados'),
     path('sucesso',SucessoViews.as_view(), name='sucesso'),
-    path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url("favicon.ico"))),
+    #path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url("favicon.ico"))),
     path('google_oauth/redirect/', RedirectOauthView),
 	path('google_oauth/callback/', CallbackView)
 ]

@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '^wf!6y_+p@*%%06$#a=a0y9vi&cigugs6qm6q14dtaraw(_5yw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['eventoscorporativos.herokuapp.com','127.0.0.1','localhost']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -130,28 +130,19 @@ USE_L10N = True
 USE_TZ = True
 
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-
 SITE_ID = 1
-
-MEDIA_URL ='media/'
-
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '/static/'
-
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
-
 LOGIN_REDIRECT_URL = '/'
-
 GOOGLE_OAUTH2_CLIENT_SECRETS_JSON = 'client_secret_924332711996-eujnigkg16bo75jhbokv0upnl8nvcaop.apps.googleusercontent.com.json'
-
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
-DICT_SERVICE = dict()
 
+
+DICT_SERVICE = dict()
 DOMINIO_ABSOLUTO = 'https://eventoscorporativos.herokuapp.com'
 #DOMINIO_ABSOLUTO = 'http://127.0.0.1:8000'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
