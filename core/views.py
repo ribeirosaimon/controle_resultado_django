@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.views.generic.base import View
 from django.views.generic import TemplateView
 from django.urls import reverse_lazy
@@ -15,15 +15,12 @@ class ResultadoViews(View):
         context = {'info':open_csv()}
         return render(request, "resultados.html", context=context)
     def post(self,request, *args, **kwargs):
-        try:
-            os.remove('token.pickle')
-        except:
-            pass
         empresas = request.POST.getlist('empresas')
-        service = authorize()
-        criar_eventos(service, empresas)
-
-        return render(request, "sucesso.html")
+        #service = authorize()
+        #criar_eventos(service, empresas)
+        args = {'empresas':empresas}
+        return HttpResponseRedirect('http://127.0.0.1:8000/google_oauth/redirect/', args)
+        #return render(request, "aguardando.html",args)
 
 
 class IndexView(TemplateView):
@@ -31,3 +28,5 @@ class IndexView(TemplateView):
 
 class SucessoViews(TemplateView):   
     template_name = 'sucesso.html'
+
+

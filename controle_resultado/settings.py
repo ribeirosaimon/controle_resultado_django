@@ -137,3 +137,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 LOGIN_REDIRECT_URL = '/'
 
 GOOGLE_OAUTH2_CLIENT_SECRETS_JSON = 'client_secret_924332711996-eujnigkg16bo75jhbokv0upnl8nvcaop.apps.googleusercontent.com.json'
+
+os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
