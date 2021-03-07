@@ -141,3 +141,6 @@ GOOGLE_OAUTH2_CLIENT_SECRETS_JSON = 'client_secret_924332711996-eujnigkg16bo75jh
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
 DICT_SERVICE = dict()
+
+#DOMINIO_ABSOLUTO = 'https://eventoscorporativos.herokuapp.com'
+DOMINIO_ABSOLUTO = 'http://127.0.0.1:8000'

@@ -20,7 +20,7 @@ class ResultadoViews(View):
         empresas = request.POST.getlist('empresas')
         settings.DICT_SERVICE['empresas'] = empresas
         current_site = Site.objects.get_current()
-        URL = f'https://{current_site.domain}/google_oauth/redirect/'
+        URL = f'{settings.DOMINIO_ABSOLUTO}/google_oauth/redirect/'
         return HttpResponseRedirect(URL)
 
 
