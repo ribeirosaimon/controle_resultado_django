@@ -8,6 +8,7 @@ from core.google_calendar.criar_eventos import *
 from core.google_calendar.conferir_calendario import *
 from django.contrib import messages
 import os
+from urllib.parse import urlencode
 
 
 class ResultadoViews(View):
@@ -16,10 +17,10 @@ class ResultadoViews(View):
         return render(request, "resultados.html", context=context)
     def post(self,request, *args, **kwargs):
         empresas = request.POST.getlist('empresas')
+        settings.DICT_SERVICE['empresas'] = empresas
         #service = authorize()
-        #criar_eventos(service, empresas)
-        args = {'empresas':empresas}
-        return HttpResponseRedirect('http://127.0.0.1:8000/google_oauth/redirect/', args)
+        #
+        return HttpResponseRedirect('http://127.0.0.1:8000/google_oauth/redirect/')
         #return render(request, "aguardando.html",args)
 
 
