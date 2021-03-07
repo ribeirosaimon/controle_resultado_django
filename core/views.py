@@ -9,6 +9,7 @@ from core.google_calendar.conferir_calendario import *
 from django.contrib import messages
 import os
 from urllib.parse import urlencode
+from django.contrib.sites.models import Site
 
 
 class ResultadoViews(View):
@@ -18,10 +19,10 @@ class ResultadoViews(View):
     def post(self,request, *args, **kwargs):
         empresas = request.POST.getlist('empresas')
         settings.DICT_SERVICE['empresas'] = empresas
-        #service = authorize()
-        #
-        return HttpResponseRedirect('http://127.0.0.1:8000/google_oauth/redirect/')
-        #return render(request, "aguardando.html",args)
+        current_site = Site.objects.get_current()
+        URL = f'https://{current_site.domain}/google_oauth/redirect/'
+        return HttpResponseRedirect(URL)
+
 
 
 class IndexView(TemplateView):
