@@ -19,7 +19,6 @@ class ResultadoViews(View):
     def post(self,request, *args, **kwargs):
         empresas = request.POST.getlist('empresas')
         settings.DICT_SERVICE['empresas'] = empresas
-        current_site = Site.objects.get_current()
         URL = f'{settings.DOMINIO_ABSOLUTO}/google_oauth/redirect/'
         return HttpResponseRedirect(URL)
 
