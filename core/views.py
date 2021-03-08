@@ -18,7 +18,7 @@ class ResultadoViews(View):
         return render(request, "resultados.html", context=context)
     def post(self,request, *args, **kwargs):
         empresas = request.POST.getlist('empresas')
-        settings.DICT_SERVICE['empresas'] = empresas
+        settings.DICT_SERVICE.append(empresas)
         URL = f'{settings.DOMINIO_ABSOLUTO}/google_oauth/redirect/'
         return HttpResponseRedirect(URL)
 
