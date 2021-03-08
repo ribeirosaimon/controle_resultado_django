@@ -137,7 +137,7 @@ os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
 
 
-DICT_SERVICE = []
+DICT_SERVICE = list()
 DOMINIO_ABSOLUTO = 'https://eventoscorporativos.herokuapp.com'
 #DOMINIO_ABSOLUTO = 'http://127.0.0.1:8000'
 
