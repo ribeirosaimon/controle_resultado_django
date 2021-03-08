@@ -31,10 +31,10 @@ def CallbackView(request):
         credentials)
     creds = google_apis_oauth.load_credentials(stringified_token)
     service = build('calendar', 'v3', credentials=creds)
-    empresas = settings.DICT_SERVICE
-    if len(empresas) == 1:
-        empresas = empresas[0]
-    print(empresas)
-    criar_eventos(service, empresas)
-    settings.DICT_SERVICE = []
+    empresas = settings.DICT_SERVICE['empresas']
+
+    print(settings.DICT_SERVICE)
+    #criar_eventos(service, empresas)
+    settings.DICT_SERVICE = dict()
+    print('--', settings.DICT_SERVICE)
     return render(request, 'sucesso.html')
