@@ -31,7 +31,7 @@ def CallbackView(request):
         credentials)
     creds = google_apis_oauth.load_credentials(stringified_token)
     service = build('calendar', 'v3', credentials=creds)
-    empresas = settings.DICT_SERVICE[0]
+    empresas = settings.DICT_SERVICE
     criar_eventos(service, empresas)
     settings.DICT_SERVICE = []
     return render(request, 'sucesso.html')
