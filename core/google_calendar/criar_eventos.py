@@ -45,4 +45,5 @@ def post_do_evento(service, empresa, lista):
           ],
         },
       }
+    print(event["summary"], ' criado com sucesso')
     service.events().insert(calendarId='primary', body=event).execute()

@@ -34,7 +34,6 @@ def CallbackView(request):
     empresas = settings.DICT_SERVICE
     if len(empresas) == 1:
         empresas = empresas[0]
-
     criar_eventos(service, empresas)
     settings.DICT_SERVICE = []
     return render(request, 'sucesso.html')
